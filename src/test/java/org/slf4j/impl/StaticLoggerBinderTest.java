@@ -16,23 +16,20 @@
 
 package org.slf4j.impl;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import org.simplify4u.sjf4jmock.LoggerFactory;
 
-class StaticLoggerBinderTest {
+public class StaticLoggerBinderTest {
 
     @Test
-    void staticLoggerBinderReturnCorrectFactory() {
-        assertThat(StaticLoggerBinder.getSingleton().getLoggerFactory())
-                .isExactlyInstanceOf(LoggerFactory.class);
+    public void staticLoggerBinderReturnCorrectFactory() {
+        assertSame(LoggerFactory.class, StaticLoggerBinder.getSingleton().getLoggerFactory().getClass());
     }
 
     @Test
-    void staticLoggerBinderReturnCorrectFactoryClassStr() {
-        assertThat(StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr())
-                .isEqualTo(LoggerFactory.class.getName());
+    public void staticLoggerBinderReturnCorrectFactoryClassStr() {
+        assertEquals(LoggerFactory.class.getName(), StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr());
     }
 
 }
