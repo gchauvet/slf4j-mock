@@ -28,8 +28,6 @@ import org.slf4j.Logger;
 
 public class LoggerFactory implements ILoggerFactory {
 
-    private static final Logger LOGGER = new SimpleLogger(LoggerFactory.class.getName());
-
     private final Map<String, Logger> loggers = new HashMap<>();
 
     /**
@@ -45,15 +43,9 @@ public class LoggerFactory implements ILoggerFactory {
         }
     }
 
-    @SuppressWarnings("java:S1312") // Loggers should be "private static final" and should share a naming convention
     private static Logger createNewLoggerMock(String name) {
-
-        LOGGER.debug("Create mock for logger: {}", name);
         Logger mock = mock(Logger.class, withSettings().lenient());
         when(mock.getName()).thenReturn(name);
-
-        new DelegateMockToSimpleLogger(name).delegate(mock);
-
         return mock;
     }
 
