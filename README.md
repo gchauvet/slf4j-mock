@@ -8,8 +8,6 @@ Yet another way to testing logging in application which use SLF4J.
 
 ## Features
  - this binding create `Mockito` mock for each `Logger`
- - all call to `Logger` method are delegated to instance of `SimpleLogger`,
-   so you can create standard `simplelogger.properties` 
  - light transitive dependencies - only `slf4j-api` and `mockito-core`
  - ease use
  
